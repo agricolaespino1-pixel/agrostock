@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AgroStock Â· Inventario agrÃ­cola</title>
+<title>AgroStock · Inventario agrícola</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -97,18 +97,18 @@ dialog ol{padding-left:20px;margin:10px 0;font-size:13px;color:var(--mut)}
 </head>
 <body>
 <header>
-  <h1>ðŸŒ± AgroStock<small>Inventario de insumos agrÃ­colas</small></h1>
-  <span class="pill" id="status">â€¦</span>
-  <button class="ibtn" id="btnSync" title="Sincronizar">âŸ³</button>
-  <button class="ibtn" id="btnCfg" title="ConfiguraciÃ³n">âš™</button>
+  <h1>🌱 AgroStock<small>Inventario de insumos agrícolas</small></h1>
+  <span class="pill" id="status">…</span>
+  <button class="ibtn" id="btnSync" title="Sincronizar">⟳</button>
+  <button class="ibtn" id="btnCfg" title="Configuración">⚙</button>
 </header>
 
 <nav id="nav">
-  <button data-tab="dash" class="on"><span>ðŸ“Š</span>Dashboard</button>
-  <button data-tab="inv"><span>ðŸ“¦</span>Inventario</button>
-  <button data-tab="uso"><span>ðŸ§ª</span>Registrar uso</button>
-  <button data-tab="hist"><span>ðŸ—“ï¸</span>Movimientos</button>
-  <button data-tab="nuevo"><span>âž•</span>Nuevo</button>
+  <button data-tab="dash" class="on"><span>📊</span>Dashboard</button>
+  <button data-tab="inv"><span>📦</span>Inventario</button>
+  <button data-tab="uso"><span>🧪</span>Registrar uso</button>
+  <button data-tab="hist"><span>🗓️</span>Movimientos</button>
+  <button data-tab="nuevo"><span>➕</span>Nuevo</button>
 </nav>
 
 <main>
@@ -117,26 +117,26 @@ dialog ol{padding-left:20px;margin:10px 0;font-size:13px;color:var(--mut)}
   <div class="grid kpis" style="margin-bottom:14px">
     <div class="card kpi"><div class="v" id="k1">0</div><div class="l">Productos registrados</div></div>
     <div class="card kpi warn"><div class="v" id="k2">0</div><div class="l">Con stock bajo o agotado</div></div>
-    <div class="card kpi"><div class="v" id="k3">0</div><div class="l">Salidas en el perÃ­odo</div></div>
-    <div class="card kpi"><div class="v" id="k4" style="font-size:17px">â€”</div><div class="l">Ãšltima salida</div></div>
+    <div class="card kpi"><div class="v" id="k3">0</div><div class="l">Salidas en el período</div></div>
+    <div class="card kpi"><div class="v" id="k4" style="font-size:17px">—</div><div class="l">Última salida</div></div>
   </div>
   <div class="card" style="margin-bottom:14px">
     <div class="filters" style="margin:0">
-      <label>PerÃ­odo<select id="dPer"><option value="7">Ãšltimos 7 dÃ­as</option><option value="30" selected>Ãšltimos 30 dÃ­as</option><option value="90">Ãšltimos 90 dÃ­as</option><option value="all">Todo</option></select></label>
-      <label>CategorÃ­a<select id="dCat"></select></label>
+      <label>Período<select id="dPer"><option value="7">Últimos 7 días</option><option value="30" selected>Últimos 30 días</option><option value="90">Últimos 90 días</option><option value="all">Todo</option></select></label>
+      <label>Categoría<select id="dCat"></select></label>
       <label>Producto<select id="dProd"></select></label>
     </div>
   </div>
   <div class="grid charts">
-    <div class="card wide"><h2>Uso por dÃ­a <span class="mut">(cada color es un producto; toca la barra para ver el detalle)</span></h2><div class="cbox"><canvas id="chDay"></canvas></div></div>
+    <div class="card wide"><h2>Uso por día <span class="mut">(cada color es un producto; toca la barra para ver el detalle)</span></h2><div class="cbox"><canvas id="chDay"></canvas></div></div>
     <div class="card"><h2>Stock actual por producto</h2><div class="cbox"><canvas id="chStock"></canvas></div></div>
-    <div class="card"><h2>Aplicaciones por categorÃ­a</h2><div class="cbox"><canvas id="chCat"></canvas></div></div>
-    <div class="card"><h2>âš ï¸ Alertas de stock</h2><div class="tw" id="alerts"></div></div>
+    <div class="card"><h2>Aplicaciones por categoría</h2><div class="cbox"><canvas id="chCat"></canvas></div></div>
+    <div class="card"><h2>⚠️ Alertas de stock</h2><div class="tw" id="alerts"></div></div>
     <div class="card">
       <div class="chead">
-        <h2>Ãšltimos movimientos</h2>
+        <h2>Últimos movimientos</h2>
         <div class="acts">
-          <button class="btn sm" id="dOpen">ðŸ“„ Abrir hoja</button>
+          <button class="btn sm" id="dOpen">📄 Abrir hoja</button>
           <button class="btn sm sec" id="dXlsx">Excel</button>
           <button class="btn sm sec" id="dPdf">PDF</button>
         </div>
@@ -149,8 +149,8 @@ dialog ol{padding-left:20px;margin:10px 0;font-size:13px;color:var(--mut)}
 <!-- INVENTARIO -->
 <section id="tab-inv">
   <div class="card">
-    <div class="row" style="margin:0 0 12px"><button class="btn sec sm" id="iCsv">â¬‡ Exportar todo el inventario (CSV)</button></div>
-    <label>Buscar producto<input id="iQ" type="search" placeholder="Nombreâ€¦"></label>
+    <div class="row" style="margin:0 0 12px"><button class="btn sec sm" id="iCsv">⬇ Exportar todo el inventario (CSV)</button></div>
+    <label>Buscar producto<input id="iQ" type="search" placeholder="Nombre…"></label>
     <div class="chips" id="iChips" style="margin-top:12px"></div>
     <div class="tw" id="invTable"></div>
   </div>
@@ -162,16 +162,16 @@ dialog ol{padding-left:20px;margin:10px 0;font-size:13px;color:var(--mut)}
     <h2>Registrar movimiento</h2>
     <form id="fMov" class="form">
       <div class="full seg">
-        <button type="button" class="on out" data-tipo="Salida">â¬‡ Salida (uso)</button>
-        <button type="button" data-tipo="Entrada" class="in">â¬† Entrada (compra)</button>
+        <button type="button" class="on out" data-tipo="Salida">⬇ Salida (uso)</button>
+        <button type="button" data-tipo="Entrada" class="in">⬆ Entrada (compra)</button>
       </div>
       <label>Fecha<input type="date" id="rFecha" required></label>
-      <label>CategorÃ­a<select id="rCat"></select></label>
+      <label>Categoría<select id="rCat"></select></label>
       <label class="full">Producto<select id="rProd" required></select></label>
       <label>Cantidad <span id="rUni" class="mut"></span><input type="number" id="rCant" step="0.001" min="0.001" inputmode="decimal" required></label>
-      <label class="fSal">Lote / cultivo / parcela<input id="rLote" placeholder="Ej. Lote 3 â€“ Palto"></label>
-      <label class="fSal">Responsable<input id="rResp" list="dlResp" placeholder="QuiÃ©n aplicÃ³"><datalist id="dlResp"></datalist></label>
-      <label class="full">Observaciones<textarea id="rObs" placeholder="Dosis, clima, notasâ€¦"></textarea></label>
+      <label class="fSal">Lote / cultivo / parcela<input id="rLote" placeholder="Ej. Lote 3 – Palto"></label>
+      <label class="fSal">Responsable<input id="rResp" list="dlResp" placeholder="Quién aplicó"><datalist id="dlResp"></datalist></label>
+      <label class="full">Observaciones<textarea id="rObs" placeholder="Dosis, clima, notas…"></textarea></label>
       <div class="full preview" id="rPrev">Elige un producto y la cantidad.</div>
       <div class="full"><button class="btn" id="rBtn" style="width:100%">Registrar salida</button></div>
     </form>
@@ -181,18 +181,18 @@ dialog ol{padding-left:20px;margin:10px 0;font-size:13px;color:var(--mut)}
 <!-- MOVIMIENTOS (hoja aparte) -->
 <section id="tab-hist">
   <div class="card">
-    <div class="chead"><h2>ðŸ—“ï¸ Hoja de movimientos</h2></div>
+    <div class="chead"><h2>🗓️ Hoja de movimientos</h2></div>
     <div class="filters">
       <label>Desde<input type="date" id="hDe"></label>
       <label>Hasta<input type="date" id="hA"></label>
-      <label>CategorÃ­a<select id="hCat"></select></label>
+      <label>Categoría<select id="hCat"></select></label>
       <label>Producto<select id="hProd"></select></label>
       <label>Tipo<select id="hTipo"><option value="">Todos</option><option>Salida</option><option>Entrada</option></select></label>
     </div>
     <div class="row" style="margin:0 0 12px">
-      <button class="btn sec sm" id="hXlsx">â¬‡ Excel (.xlsx)</button>
-      <button class="btn sec sm" id="hPdf">â¬‡ PDF</button>
-      <button class="btn sec sm" id="hCsv">â¬‡ CSV</button>
+      <button class="btn sec sm" id="hXlsx">⬇ Excel (.xlsx)</button>
+      <button class="btn sec sm" id="hPdf">⬇ PDF</button>
+      <button class="btn sec sm" id="hCsv">⬇ CSV</button>
       <span class="mut" id="hCount" style="align-self:center"></span>
     </div>
     <div class="tw" id="histTable"></div>
@@ -206,32 +206,32 @@ dialog ol{padding-left:20px;margin:10px 0;font-size:13px;color:var(--mut)}
     <h2>Nuevo producto</h2>
     <form id="fProd" class="form">
       <label class="full">Nombre del producto<input id="pNom" required placeholder="Ej. Urea 46%"></label>
-      <label>CategorÃ­a<select id="pCat"></select></label>
-      <label id="pNewWrap" class="hide">Nombre de la nueva categorÃ­a<input id="pNew" placeholder="Ej. Herbicidas"></label>
+      <label>Categoría<select id="pCat"></select></label>
+      <label id="pNewWrap" class="hide">Nombre de la nueva categoría<input id="pNew" placeholder="Ej. Herbicidas"></label>
       <label>Unidad<select id="pUni"><option value="L">Litros (L)</option><option value="kg">Kilos (kg)</option></select></label>
       <label>Stock inicial<input type="number" id="pStock" step="0.001" min="0" value="0" inputmode="decimal"></label>
-      <label>Stock mÃ­nimo (alerta)<input type="number" id="pMin" step="0.001" min="0" value="0" inputmode="decimal"></label>
+      <label>Stock mínimo (alerta)<input type="number" id="pMin" step="0.001" min="0" value="0" inputmode="decimal"></label>
       <label>Proveedor<input id="pProv"></label>
       <label class="full">Notas<textarea id="pNotas"></textarea></label>
       <div class="full"><button class="btn" id="pBtn" style="width:100%">Guardar producto</button></div>
     </form>
-    <p class="mut" style="margin-top:10px">Cada categorÃ­a tiene su propia hoja en Google Sheets; si creas una categorÃ­a nueva, la hoja se crea sola.</p>
+    <p class="mut" style="margin-top:10px">Cada categoría tiene su propia hoja en Google Sheets; si creas una categoría nueva, la hoja se crea sola.</p>
   </div>
-  <div class="card"><h2>CategorÃ­as</h2>
-    <form id="fCat" class="row" style="margin:0 0 12px"><input id="cNom" placeholder="Nueva categorÃ­a (ej. Herbicidas)" style="flex:1;min-width:180px;margin:0" required><button class="btn">ï¼‹ Crear categorÃ­a</button></form>
+  <div class="card"><h2>Categorías</h2>
+    <form id="fCat" class="row" style="margin:0 0 12px"><input id="cNom" placeholder="Nueva categoría (ej. Herbicidas)" style="flex:1;min-width:180px;margin:0" required><button class="btn">＋ Crear categoría</button></form>
     <div id="catList"></div></div>
   </div>
 </section>
 </main>
 
 <dialog id="dlgCfg">
-  <h2 style="margin-bottom:6px">ConexiÃ³n con Google Sheets</h2>
-  <label>URL de la aplicaciÃ³n web (Apps Script, termina en /exec)<input id="cfgUrl" placeholder="https://script.google.com/macros/s/â€¦/exec"></label>
+  <h2 style="margin-bottom:6px">Conexión con Google Sheets</h2>
+  <label>URL de la aplicación web (Apps Script, termina en /exec)<input id="cfgUrl" placeholder="https://script.google.com/macros/s/…/exec"></label>
   <ol>
     <li>Crea una hoja nueva en Google Sheets.</li>
-    <li>Extensiones â€º Apps Script: pega el archivo <b>Code.gs</b> y ejecuta <b>configurarHojas</b>.</li>
-    <li>Implementar â€º AplicaciÃ³n web â€º acceso: <b>Cualquier persona</b>.</li>
-    <li>Pega aquÃ­ la URL y guarda.</li>
+    <li>Extensiones › Apps Script: pega el archivo <b>Code.gs</b> y ejecuta <b>configurarHojas</b>.</li>
+    <li>Implementar › Aplicación web › acceso: <b>Cualquier persona</b>.</li>
+    <li>Pega aquí la URL y guarda.</li>
   </ol>
   <p class="mut">Sin URL, la app funciona en <b>modo demo</b>: los datos se guardan solo en este navegador.</p>
   <div class="row">
@@ -244,10 +244,9 @@ dialog ol{padding-left:20px;margin:10px 0;font-size:13px;color:var(--mut)}
 
 <script>
 /* ============================================================
-   CONFIGURACIÃ“N: pega aquÃ­ la URL de tu Apps Script (termina en /exec)
-   Ejemplo: 'https://script.google.com/macros/s/AKfycb.../exec'
+   CONFIGURACIÓN: URL de tu Apps Script (termina en /exec)
    ============================================================ */
-const API_URL='https://script.google.com/macros/s/AKfycbxKf3UQXnnkWXRBXYQ2Be8ggKW2xK7oou8P0ChkcH8b4W1HG0hwg95lfKroa6YAdv3DLQ/exec';
+const API_URL='https://script.google.com/macros/s/AKfycbwqVis67rLrzGhzAwhwkOObFYyTibNN2krIb04RGep1EJ-Y474Vieb9mbP95HeNfEnO/exec';
 
 /* ===== Utilidades ===== */
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -283,15 +282,15 @@ const local={
     const addCat=n=>{if(!d.categorias.some(c=>c.toLowerCase()===n.toLowerCase()))d.categorias.push(n)};
     if(b.action==='addCategory'){
       const n=String(b.nombre||'').trim();
-      if(!n)throw new Error('Escribe el nombre de la categorÃ­a.');
-      if(RESERV.includes(n.toLowerCase()))throw new Error('Ese nombre estÃ¡ reservado.');
-      if(d.categorias.some(c=>c.toLowerCase()===n.toLowerCase()))throw new Error('La categorÃ­a ya existe.');
+      if(!n)throw new Error('Escribe el nombre de la categoría.');
+      if(RESERV.includes(n.toLowerCase()))throw new Error('Ese nombre está reservado.');
+      if(d.categorias.some(c=>c.toLowerCase()===n.toLowerCase()))throw new Error('La categoría ya existe.');
       d.categorias.push(n);
     }else if(b.action==='addProduct'){
       const n=String(b.nombre||'').trim(),c=String(b.categoria||'').trim();
-      if(!n)throw new Error('Falta el nombre del producto.');if(!c)throw new Error('Falta la categorÃ­a.');
-      if(RESERV.includes(c.toLowerCase()))throw new Error('Nombre de categorÃ­a reservado.');
-      if(d.productos.some(p=>p.nombre.toLowerCase()===n.toLowerCase()&&p.categoria===c))throw new Error('Ya existe ese producto en la categorÃ­a.');
+      if(!n)throw new Error('Falta el nombre del producto.');if(!c)throw new Error('Falta la categoría.');
+      if(RESERV.includes(c.toLowerCase()))throw new Error('Nombre de categoría reservado.');
+      if(d.productos.some(p=>p.nombre.toLowerCase()===n.toLowerCase()&&p.categoria===c))throw new Error('Ya existe ese producto en la categoría.');
       addCat(c);const st=r3(b.stockInicial||0);
       d.productos.push({id:nid('P',d.productos),nombre:n,categoria:c,unidad:b.unidad==='kg'?'kg':'L',stockInicial:st,stockActual:st,stockMin:r3(b.stockMin||0),proveedor:b.proveedor||'',notas:b.notas||'',creado:today()});
     }else if(b.action==='updateProduct'){
@@ -309,9 +308,9 @@ const local={
       const i=d.movimientos.findIndex(x=>x.id===b.id);if(i<0)throw new Error('Movimiento no encontrado.');
       const m=d.movimientos[i],p=d.productos.find(x=>x.id===m.idProducto);
       if(p){const nv=r3(m.tipo==='Salida'?p.stockActual+m.cantidad:p.stockActual-m.cantidad);
-        if(nv<0)throw new Error('No se puede anular: el stock quedarÃ­a negativo.');p.stockActual=nv}
+        if(nv<0)throw new Error('No se puede anular: el stock quedaría negativo.');p.stockActual=nv}
       d.movimientos.splice(i,1);
-    }else throw new Error('AcciÃ³n desconocida.');
+    }else throw new Error('Acción desconocida.');
     this.save(d);return d;
   }
 };
@@ -327,7 +326,7 @@ async function apiPost(body){
 }
 async function load(){
   try{S=await apiGet();render()}catch(e){toast('No se pudo leer Google Sheets: '+e.message,true)}
-  const st=$('#status');st.textContent=URL_?'â— Google Sheets':'Modo demo (local)';st.className='pill'+(URL_?'':' demo');
+  const st=$('#status');st.textContent=URL_?'● Google Sheets':'Modo demo (local)';st.className='pill'+(URL_?'':' demo');
 }
 async function act(body,okMsg,btn){
   if(btn)btn.disabled=true;
@@ -342,7 +341,7 @@ function setOpts(sel,opts,keep=true){
   if(keep&&opts.some(o=>o.v===cur))sel.value=cur;
 }
 const catOpts=(all)=>[...(all?[{v:'',t:'Todas'}]:[]),...S.categorias.map(c=>({v:c,t:c}))];
-const prodOpts=(cat,all,stock)=>[...(all?[{v:'',t:'Todos'}]:[]),...S.productos.filter(p=>!cat||p.categoria===cat).map(p=>({v:p.id,t:stock?`${p.nombre} â€” ${fmt(p.stockActual)} ${p.unidad}`:p.nombre}))];
+const prodOpts=(cat,all,stock)=>[...(all?[{v:'',t:'Todos'}]:[]),...S.productos.filter(p=>!cat||p.categoria===cat).map(p=>({v:p.id,t:stock?`${p.nombre} — ${fmt(p.stockActual)} ${p.unidad}`:p.nombre}))];
 const badge=e=>`<span class="badge b-${e}">${ESTL[e]}</span>`;
 const empty=t=>`<div class="empty">${t}</div>`;
 
@@ -352,7 +351,7 @@ function render(){
   setOpts($('#dCat'),catOpts(true));setOpts($('#dProd'),prodOpts($('#dCat').value,true));
   setOpts($('#rCat'),catOpts(true));setOpts($('#rProd'),prodOpts($('#rCat').value,false,true));
   setOpts($('#hCat'),catOpts(true));setOpts($('#hProd'),prodOpts($('#hCat').value,true));
-  setOpts($('#pCat'),[...catOpts(false),{v:'__new__',t:'ï¼‹ Nueva categorÃ­aâ€¦'}]);
+  setOpts($('#pCat'),[...catOpts(false),{v:'__new__',t:'＋ Nueva categoría…'}]);
   $('#dlResp').innerHTML=[...new Set(S.movimientos.map(m=>m.responsable).filter(Boolean))].map(r=>`<option value="${esc(r)}">`).join('');
   renderDash();renderInv();renderHist();renderCats();preview();
 }
@@ -367,9 +366,9 @@ function renderDash(){
   $('#k2').textContent=S.productos.filter(p=>estado(p)!=='ok').length;
   $('#k3').textContent=sal.length;
   const last=[...S.movimientos].filter(m=>m.tipo==='Salida').sort(byRecent)[0];
-  $('#k4').textContent=last?`${last.producto} Â· ${dm(last.fecha)}`:'â€”';
+  $('#k4').textContent=last?`${last.producto} · ${dm(last.fecha)}`:'—';
 
-  // Uso por dÃ­a
+  // Uso por día
   let days=[];
   if(per==='all'){days=[...new Set(sal.map(m=>m.fecha))].sort()}
   else{const d=new Date();for(let i=+per-1;i>=0;i--){const x=new Date();x.setDate(d.getDate()-i);days.push(ymd(x))}}
@@ -387,17 +386,17 @@ function renderDash(){
   const col={ok:'#16a34a',bajo:'#d97706',agotado:'#dc2626'};
   draw('chStock',{type:'bar',data:{labels:top.map(p=>`${p.nombre} (${p.unidad})`),datasets:[{data:top.map(p=>p.stockActual),backgroundColor:top.map(p=>col[estado(p)]),borderRadius:5}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true}}}});
 
-  // Aplicaciones por categorÃ­a
+  // Aplicaciones por categoría
   const cnt={};sal.forEach(m=>cnt[m.categoria]=(cnt[m.categoria]||0)+1);
   const keys=Object.keys(cnt);
   draw('chCat',{type:'doughnut',data:{labels:keys,datasets:[{data:keys.map(x=>cnt[x]),backgroundColor:['#16a34a','#0ea5e9','#d97706','#8b5cf6','#ec4899','#14b8a6','#64748b','#f59e0b']}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}});
 
   // Alertas
   const al=prods.filter(p=>estado(p)!=='ok').sort((a,b)=>a.stockActual-b.stockActual);
-  $('#alerts').innerHTML=al.length?`<table><tr><th>Producto</th><th>Stock</th><th></th></tr>${al.map(p=>`<tr><td>${esc(p.nombre)}<div class="mut">${esc(p.categoria)}</div></td><td>${fmt(p.stockActual)} ${p.unidad}</td><td>${badge(estado(p))}</td></tr>`).join('')}</table>`:empty('Todo el stock estÃ¡ en niveles normales âœ”');
-  // Ãšltimos movimientos
+  $('#alerts').innerHTML=al.length?`<table><tr><th>Producto</th><th>Stock</th><th></th></tr>${al.map(p=>`<tr><td>${esc(p.nombre)}<div class="mut">${esc(p.categoria)}</div></td><td>${fmt(p.stockActual)} ${p.unidad}</td><td>${badge(estado(p))}</td></tr>`).join('')}</table>`:empty('Todo el stock está en niveles normales ✔');
+  // Últimos movimientos
   const lm=[...S.movimientos].sort(byRecent).slice(0,8);
-  $('#lastMov').innerHTML=lm.length?`<table><tr><th>Fecha</th><th>Producto</th><th>Cant.</th><th>Quedan</th></tr>${lm.map(m=>`<tr><td>${dm(m.fecha)}</td><td>${esc(m.producto)}</td><td><span class="badge ${m.tipo==='Salida'?'b-sal':'b-ent'}">${m.tipo==='Salida'?'âˆ’':'+'}${fmt(m.cantidad)} ${m.unidad}</span></td><td>${fmt(m.stockResultante)}</td></tr>`).join('')}</table>`:empty('AÃºn no hay movimientos.');
+  $('#lastMov').innerHTML=lm.length?`<table><tr><th>Fecha</th><th>Producto</th><th>Cant.</th><th>Quedan</th></tr>${lm.map(m=>`<tr><td>${dm(m.fecha)}</td><td>${esc(m.producto)}</td><td><span class="badge ${m.tipo==='Salida'?'b-sal':'b-ent'}">${m.tipo==='Salida'?'−':'+'}${fmt(m.cantidad)} ${m.unidad}</span></td><td>${fmt(m.stockResultante)}</td></tr>`).join('')}</table>`:empty('Aún no hay movimientos.');
 }
 function draw(id,cfg){
   if(typeof Chart==='undefined')return;
@@ -410,12 +409,12 @@ function renderInv(){
   $('#iChips').innerHTML=['',...S.categorias].map(c=>`<button class="chip ${c===invCat?'on':''}" data-c="${esc(c)}">${c?esc(c):'Todas'}</button>`).join('');
   const q=$('#iQ').value.trim().toLowerCase();
   const list=S.productos.filter(p=>(!invCat||p.categoria===invCat)&&(!q||p.nombre.toLowerCase().includes(q)));
-  $('#invTable').innerHTML=list.length?`<table><tr><th>Producto</th><th>Stock actual</th><th>MÃ­nimo</th><th>Estado</th><th></th></tr>${list.map(p=>{
+  $('#invTable').innerHTML=list.length?`<table><tr><th>Producto</th><th>Stock actual</th><th>Mínimo</th><th>Estado</th><th></th></tr>${list.map(p=>{
     const e=estado(p),cap=Math.max(p.stockInicial,p.stockActual,p.stockMin*2,0.001),w=Math.min(100,p.stockActual/cap*100);
-    return `<tr><td><b>${esc(p.nombre)}</b><div class="mut">${esc(p.categoria)}${p.proveedor?' Â· '+esc(p.proveedor):''}</div></td>
+    return `<tr><td><b>${esc(p.nombre)}</b><div class="mut">${esc(p.categoria)}${p.proveedor?' · '+esc(p.proveedor):''}</div></td>
     <td style="min-width:120px"><b>${fmt(p.stockActual)} ${p.unidad}</b><div class="bar ${e}"><i style="width:${w}%"></i></div></td>
     <td>${fmt(p.stockMin)} ${p.unidad}</td><td>${badge(e)}</td>
-    <td style="white-space:nowrap"><button class="btn sm" data-use="${p.id}">Usar</button> <button class="btn sm sec" data-min="${p.id}">MÃ­n.</button></td></tr>`}).join('')}</table>`:empty('No hay productos. AgrÃ©galos en la pestaÃ±a â€œNuevoâ€.');
+    <td style="white-space:nowrap"><button class="btn sm" data-use="${p.id}">Usar</button> <button class="btn sm sec" data-min="${p.id}">Mín.</button></td></tr>`}).join('')}</table>`:empty('No hay productos. Agrégalos en la pestaña “Nuevo”.');
 }
 
 function filteredHist(){
@@ -427,7 +426,7 @@ function renderHist(){
   $('#histTable').innerHTML=list.length?`<table><tr><th>Fecha</th><th>Producto</th><th>Tipo</th><th>Cantidad</th><th>Quedan</th><th>Lote</th><th>Responsable</th><th>Obs.</th><th></th></tr>${list.map(m=>`<tr><td>${dmy(m.fecha)}<div class="mut">${esc(m.hora)}</div></td><td>${esc(m.producto)}<div class="mut">${esc(m.categoria)}</div></td><td><span class="badge ${m.tipo==='Salida'?'b-sal':'b-ent'}">${m.tipo}</span></td><td>${fmt(m.cantidad)} ${m.unidad}</td><td>${fmt(m.stockResultante)} ${m.unidad}</td><td>${esc(m.lote)}</td><td>${esc(m.responsable)}</td><td>${esc(m.observaciones)}</td><td><button class="btn sm red" data-del="${m.id}">Anular</button></td></tr>`).join('')}</table>`:empty('Sin movimientos para estos filtros.');
 }
 function renderCats(){
-  $('#catList').innerHTML=S.categorias.map(c=>{const n=S.productos.filter(p=>p.categoria===c).length;return `<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)"><span>ðŸ“ ${esc(c)}</span><span class="mut">${n} producto${n===1?'':'s'}</span></div>`}).join('');
+  $('#catList').innerHTML=S.categorias.map(c=>{const n=S.productos.filter(p=>p.categoria===c).length;return `<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)"><span>📁 ${esc(c)}</span><span class="mut">${n} producto${n===1?'':'s'}</span></div>`}).join('');
 }
 
 /* ===== Registrar uso ===== */
@@ -439,8 +438,8 @@ function preview(){
   if(!p){box.className='full preview';box.textContent='Elige un producto y la cantidad.';return}
   if(!(q>0)){box.className='full preview';box.innerHTML=`Stock actual: <b>${fmt(p.stockActual)} ${p.unidad}</b>`;return}
   const nv=r3(tipo==='Salida'?p.stockActual-q:p.stockActual+q);
-  if(nv<0){box.className='full preview err';box.innerHTML=`âš  Stock insuficiente. Solo hay <b>${fmt(p.stockActual)} ${p.unidad}</b>.`;return}
-  box.className='full preview';box.innerHTML=`Stock actual: <b>${fmt(p.stockActual)} ${p.unidad}</b> â†’ quedarÃ¡: <b>${fmt(nv)} ${p.unidad}</b>`;
+  if(nv<0){box.className='full preview err';box.innerHTML=`⚠ Stock insuficiente. Solo hay <b>${fmt(p.stockActual)} ${p.unidad}</b>.`;return}
+  box.className='full preview';box.innerHTML=`Stock actual: <b>${fmt(p.stockActual)} ${p.unidad}</b> → quedará: <b>${fmt(nv)} ${p.unidad}</b>`;
 }
 function setTipo(t){
   tipo=t;$$('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.tipo===t));
@@ -449,7 +448,7 @@ function setTipo(t){
 }
 
 /* ===== Exportar movimientos (Excel / PDF / CSV) ===== */
-const MOV_HEAD=['Fecha','Hora','Producto','CategorÃ­a','Tipo','Cantidad','Unidad','Lote','Responsable','Observaciones','Stock resultante'];
+const MOV_HEAD=['Fecha','Hora','Producto','Categoría','Tipo','Cantidad','Unidad','Lote','Responsable','Observaciones','Stock resultante'];
 const movRows=rows=>rows.map(m=>[dmy(m.fecha),m.hora||'',m.producto,m.categoria,m.tipo,Number(m.cantidad),m.unidad,m.lote||'',m.responsable||'',m.observaciones||'',Number(m.stockResultante)]);
 function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
 
@@ -465,7 +464,7 @@ function exportXlsx(rows){
     const t=`<html><head><meta charset="utf-8"></head><body><table border="1"><tr>${MOV_HEAD.map(h=>`<th>${esc(h)}</th>`).join('')}</tr>${body.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table></body></html>`;
     download(new Blob(['\ufeff'+t],{type:'application/vnd.ms-excel'}),`movimientos_${today()}.xls`);
   }
-  toast('Excel generado âœ”');
+  toast('Excel generado ✔');
 }
 function exportPdf(rows,subtitle){
   if(!rows.length)return toast('No hay datos para exportar.',true);
@@ -473,18 +472,18 @@ function exportPdf(rows,subtitle){
   const J=window.jspdf&&window.jspdf.jsPDF;
   if(J){
     const doc=new J({orientation:'landscape',unit:'mm',format:'a4'});
-    doc.setFontSize(15);doc.text('AgroStock Â· Movimientos de inventario',14,15);
+    doc.setFontSize(15);doc.text('AgroStock · Movimientos de inventario',14,15);
     doc.setFontSize(9);doc.setTextColor(100);
-    doc.text(`${subtitle||'Todos los movimientos'} Â· ${rows.length} registros Â· Generado ${dmy(today())}`,14,21);
+    doc.text(`${subtitle||'Todos los movimientos'} · ${rows.length} registros · Generado ${dmy(today())}`,14,21);
     if(typeof doc.autoTable==='function'){
       doc.autoTable({head:[MOV_HEAD],body,startY:25,styles:{fontSize:7.5,cellPadding:1.8},headStyles:{fillColor:[21,128,61]},alternateRowStyles:{fillColor:[240,253,244]}});
     }
     doc.save(`movimientos_${today()}.pdf`);
-    toast('PDF generado âœ”');
+    toast('PDF generado ✔');
   }else{
     const w=window.open('','_blank');
     if(!w)return toast('Permite ventanas emergentes para generar el PDF.',true);
-    w.document.write(`<html><head><meta charset="utf-8"><title>Movimientos</title><style>body{font-family:sans-serif;font-size:11px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #bbb;padding:4px 6px;text-align:left}th{background:#15803d;color:#fff}</style></head><body><h2>AgroStock Â· Movimientos</h2><table><tr>${MOV_HEAD.map(h=>`<th>${esc(h)}</th>`).join('')}</tr>${body.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table></body></html>`);
+    w.document.write(`<html><head><meta charset="utf-8"><title>Movimientos</title><style>body{font-family:sans-serif;font-size:11px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #bbb;padding:4px 6px;text-align:left}th{background:#15803d;color:#fff}</style></head><body><h2>AgroStock · Movimientos</h2><table><tr>${MOV_HEAD.map(h=>`<th>${esc(h)}</th>`).join('')}</tr>${body.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table></body></html>`);
     w.document.close();w.focus();setTimeout(()=>w.print(),400);
   }
 }
@@ -492,7 +491,7 @@ function histSubtitle(){
   const p=[];const de=$('#hDe').value,a=$('#hA').value,c=$('#hCat').value,pr=$('#hProd').value,t=$('#hTipo').value;
   if(de)p.push('desde '+dmy(de));if(a)p.push('hasta '+dmy(a));if(c)p.push(c);
   if(pr){const x=S.productos.find(z=>z.id===pr);if(x)p.push(x.nombre)}if(t)p.push(t+'s');
-  return p.length?'Filtros: '+p.join(' Â· '):'Todos los movimientos';
+  return p.length?'Filtros: '+p.join(' · '):'Todos los movimientos';
 }
 const allMov=()=>[...S.movimientos].sort(byRecent);
 
@@ -512,8 +511,8 @@ $('#iChips').onclick=e=>{const b=e.target.closest('.chip');if(b){invCat=b.datase
 $('#invTable').onclick=async e=>{
   const u=e.target.closest('[data-use]'),m=e.target.closest('[data-min]');
   if(u){showTab('uso');$('#rCat').value='';setOpts($('#rProd'),prodOpts('',false,true),false);$('#rProd').value=u.dataset.use;setTipo('Salida');preview();$('#rCant').focus()}
-  if(m){const p=S.productos.find(x=>x.id===m.dataset.min);const v=prompt(`Stock mÃ­nimo de ${p.nombre} (${p.unidad}):`,p.stockMin);
-    if(v!==null&&v.trim()!==''&&!isNaN(v))await act({action:'updateProduct',id:p.id,stockMin:parseFloat(v)},'Stock mÃ­nimo actualizado')}
+  if(m){const p=S.productos.find(x=>x.id===m.dataset.min);const v=prompt(`Stock mínimo de ${p.nombre} (${p.unidad}):`,p.stockMin);
+    if(v!==null&&v.trim()!==''&&!isNaN(v))await act({action:'updateProduct',id:p.id,stockMin:parseFloat(v)},'Stock mínimo actualizado')}
 };
 $('.seg').onclick=e=>{const b=e.target.closest('button');if(b)setTipo(b.dataset.tipo)};
 $('#rCat').onchange=()=>{setOpts($('#rProd'),prodOpts($('#rCat').value,false,true),false);preview()};
@@ -528,7 +527,7 @@ $('#fMov').onsubmit=async e=>{
 ['hDe','hA','hCat','hProd','hTipo'].forEach(id=>$('#'+id).onchange=()=>{if(id==='hCat')setOpts($('#hProd'),prodOpts($('#hCat').value,true),false);renderHist()});
 $('#histTable').onclick=async e=>{
   const d=e.target.closest('[data-del]');if(!d)return;
-  if(confirm('Â¿Anular este movimiento? El stock se corregirÃ¡ automÃ¡ticamente.'))await act({action:'deleteMovement',id:d.dataset.del},'Movimiento anulado');
+  if(confirm('¿Anular este movimiento? El stock se corregirá automáticamente.'))await act({action:'deleteMovement',id:d.dataset.del},'Movimiento anulado');
 };
 $('#hXlsx').onclick=()=>exportXlsx(filteredHist());
 $('#hPdf').onclick=()=>exportPdf(filteredHist(),histSubtitle());
@@ -540,26 +539,26 @@ $('#hCsv').onclick=()=>{
 };
 $('#iCsv').onclick=()=>{
   if(!S.productos.length)return toast('No hay productos para exportar.',true);
-  const h=['ID','Producto','CategorÃ­a','Unidad','Stock inicial','Stock actual','Stock mÃ­nimo','Estado','Proveedor','Notas','Creado'];
+  const h=['ID','Producto','Categoría','Unidad','Stock inicial','Stock actual','Stock mínimo','Estado','Proveedor','Notas','Creado'];
   const q=v=>`"${String(v??'').replace(/"/g,'""')}"`;
   const csv='\ufeff'+[h.map(q).join(','),...S.productos.map(p=>[p.id,p.nombre,p.categoria,p.unidad,p.stockInicial,p.stockActual,p.stockMin,ESTL[estado(p)],p.proveedor,p.notas,p.creado].map(q).join(','))].join('\n');
   download(new Blob([csv],{type:'text/csv'}),`inventario_${today()}.csv`);
 };
 $('#fCat').onsubmit=async e=>{
   e.preventDefault();
-  const ok=await act({action:'addCategory',nombre:$('#cNom').value.trim()},'CategorÃ­a creada âœ” (con su hoja en Google Sheets)');
+  const ok=await act({action:'addCategory',nombre:$('#cNom').value.trim()},'Categoría creada ✔ (con su hoja en Google Sheets)');
   if(ok)$('#cNom').value='';
 };
 $('#pCat').onchange=()=>$('#pNewWrap').classList.toggle('hide',$('#pCat').value!=='__new__');
 $('#fProd').onsubmit=async e=>{
   e.preventDefault();let cat=$('#pCat').value;
-  if(cat==='__new__'){cat=$('#pNew').value.trim();if(!cat)return toast('Escribe el nombre de la nueva categorÃ­a.',true)}
-  const ok=await act({action:'addProduct',nombre:$('#pNom').value.trim(),categoria:cat,unidad:$('#pUni').value,stockInicial:parseFloat($('#pStock').value)||0,stockMin:parseFloat($('#pMin').value)||0,proveedor:$('#pProv').value.trim(),notas:$('#pNotas').value.trim()},'Producto guardado âœ”',$('#pBtn'));
+  if(cat==='__new__'){cat=$('#pNew').value.trim();if(!cat)return toast('Escribe el nombre de la nueva categoría.',true)}
+  const ok=await act({action:'addProduct',nombre:$('#pNom').value.trim(),categoria:cat,unidad:$('#pUni').value,stockInicial:parseFloat($('#pStock').value)||0,stockMin:parseFloat($('#pMin').value)||0,proveedor:$('#pProv').value.trim(),notas:$('#pNotas').value.trim()},'Producto guardado ✔',$('#pBtn'));
   if(ok){$('#fProd').reset();$('#pNewWrap').classList.add('hide')}
 };
 $('#btnSync').onclick=async()=>{await load();toast('Datos actualizados')};
 $('#btnCfg').onclick=()=>{
-  if(API_OK)return toast('Conectado a Google Sheets (la URL estÃ¡ fija en el index.html).');
+  if(API_OK)return toast('Conectado a Google Sheets (la URL está fija en el index.html).');
   $('#cfgUrl').value=URL_;$('#dlgCfg').showModal();
 };
 $('#cfgClose').onclick=()=>$('#dlgCfg').close();
@@ -571,15 +570,15 @@ $('#cfgSave').onclick=async()=>{
 };
 $('#cfgDemo').onclick=async()=>{
   if(URL_)return toast('Quita la URL para usar el modo demo.',true);
-  const d=local.get();if(d.productos.length&&!confirm('Esto reemplaza los datos demo actuales. Â¿Continuar?'))return;
+  const d=local.get();if(d.productos.length&&!confirm('Esto reemplaza los datos demo actuales. ¿Continuar?'))return;
   const P=(n,c,u,s,m)=>({nombre:n,categoria:c,unidad:u,stock:s,min:m});
-  const demo=[P('Urea 46%','Fertilizantes','kg',500,100),P('Nitrato de calcio','Fertilizantes','kg',300,80),P('Cipermetrina','Pesticidas','L',20,5),P('Mancozeb','Fungicidas','kg',40,10),P('Ãcido hÃºmico','Enmiendas','L',60,15),P('Algas marinas','Foliares','L',25,8),P('Enraizante AIB','Enraizantes','L',12,4)];
+  const demo=[P('Urea 46%','Fertilizantes','kg',500,100),P('Nitrato de calcio','Fertilizantes','kg',300,80),P('Cipermetrina','Pesticidas','L',20,5),P('Mancozeb','Fungicidas','kg',40,10),P('Ácido húmico','Enmiendas','L',60,15),P('Algas marinas','Foliares','L',25,8),P('Enraizante AIB','Enraizantes','L',12,4)];
   const n={productos:[],movimientos:[],categorias:CATS0.slice()};local.save(n);
   demo.forEach(x=>local.post({action:'addProduct',nombre:x.nombre,categoria:x.categoria,unidad:x.unidad,stockInicial:x.stock,stockMin:x.min}));
   const dd=local.get();
   for(let i=0;i<14;i++){const f=new Date();f.setDate(f.getDate()-i*2);
     const p=dd.productos[i%dd.productos.length];
-    local.post({action:'addMovement',idProducto:p.id,tipo:'Salida',cantidad:r3((p.stockInicial*0.04)*(1+(i%3)*.5)),fecha:ymd(f),lote:'Lote '+(1+i%4),responsable:i%2?'Juan':'MarÃ­a'});}
+    local.post({action:'addMovement',idProducto:p.id,tipo:'Salida',cantidad:r3((p.stockInicial*0.04)*(1+(i%3)*.5)),fecha:ymd(f),lote:'Lote '+(1+i%4),responsable:i%2?'Juan':'María'});}
   $('#dlgCfg').close();await load();toast('Datos de ejemplo cargados');
 };
 
